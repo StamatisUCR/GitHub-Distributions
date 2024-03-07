@@ -29,7 +29,7 @@ def save_work():
          'Num_Forks': num_forks, 'Num_Commits': num_commits,
          'Topics': topics, 'Size': size})
 
-    df.to_csv('1000_stars_2023_August.csv')
+    df.to_csv('1000_stars_2023.csv')
 
 
 def query(auth_key, query_list, full_names, full_names_previous):
@@ -42,7 +42,7 @@ def query(auth_key, query_list, full_names, full_names_previous):
         get_rep_info(repos, full_names, full_names_previous)
 
 
-def get_rep_info(repos, full_names, full_names_previous):  # 16 requests + 2 * num_stars + 1 * num_contributors
+def get_rep_info(repos, full_names, full_names_previous):
     """Given a set of repositories from Github API,
     puts their name in one text file and downloads
     zip files of their default branch to current directory"""
@@ -68,12 +68,12 @@ def get_rep_info(repos, full_names, full_names_previous):  # 16 requests + 2 * n
             topics.append(repo.get_topics())
             size.append(repo.size)
 
-            # stargazers_count, stargazers_user, stargazers_login_time = get_stargazers_list(repo)  # 2 requests + 2 per star
+            # stargazers_count, stargazers_user, stargazers_login_time = get_stargazers_list(repo)
             # stars.append(stargazers_count)
             # stargazers_users.append(stargazers_user)
             # stargazers_login_times.append(stargazers_login_time)
 
-            # num_contributor, contributors_user = get_contributors_list(repo)  # 2 requests + 1 per contributor
+            # num_contributor, contributors_user = get_contributors_list(repo)
             # num_contributors.append(num_contributors)
             # contributors_count.append(num_contributors)
             # contributors_users.append(contributors_user)
